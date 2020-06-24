@@ -22,12 +22,12 @@
 // the SparkFun breakout board defaults to 1, set to 0 if SA0 jumper on the bottom of the board is set
 // see the Table 10. I2C Device Address Sequence in Freescale MMA8452Q pdf
  
-#include "mbed.h"
+#include "I2C.h"
 
-#define MMA8452_DEBUG 1
+//#define MMA8452_DEBUG 1
 
 // More info on MCU Master address can be found on section 5.10.1 of http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=MMA8452Q
-#define SA0 1
+//#define SA0 1
 #if SA0
   #define MMA8452_ADDRESS 0x3A // 0x1D<<1  // SA0 is high, 0x1C if low - 
 #else
@@ -333,7 +333,7 @@ class MMA8452 {
       /// Get the counts per G for the current settings of bit depth and dynamic range.
       int getCountsPerG();
     
-      I2C _i2c;
+      mbed::I2C _i2c;
       int _frequency;
       int _readAddress;
       int _writeAddress;
